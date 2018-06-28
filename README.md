@@ -1,0 +1,2 @@
+# netcoreConsoleService
+測試有關consoleservice
