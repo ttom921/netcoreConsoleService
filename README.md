@@ -12,9 +12,10 @@
 //DI
    Autofac.Extensions.DependencyInjection
 2. 使用Serilog來當成log   
-   [參袁](https://github.com/nblumhardt/autofac-serilog-integration)
+   [參考1](https://github.com/nblumhardt/autofac-serilog-integration)
+   
 3. 使用Autofac來DI一下
    要使用Serilog要安裝 AutofacSerilogIntegration
-   
+   [參考2](https://gist.github.com/greatb/1bfd9a5bd579a65e4eee1c4b074dacd0)
 
 4. 使用Dapper來存取資料庫

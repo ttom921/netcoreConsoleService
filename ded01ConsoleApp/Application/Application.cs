@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ded01ConsoleApp
+{
+    public class Application : IApplication
+    {
+      
+
+        private readonly IBatchService _service;
+        public Application(IBatchService service)
+        {
+            _service = service;
+        }
+
+        public void Run()
+        {
+            Console.WriteLine("Application Run");
+            _service.WriteInformation("Injected!");
+        }
+    }
+}
