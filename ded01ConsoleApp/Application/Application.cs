@@ -19,7 +19,7 @@ namespace ded01ConsoleApp
             Console.WriteLine("Application Run");
             _service.WriteInformation("Injected!");
             Console.WriteLine("----------------------------");
-            _service.TestMysqlRead();
+            //_service.TestMysqlRead();
             Console.WriteLine("----------------------------");
             _service.TestTempQuery();
 

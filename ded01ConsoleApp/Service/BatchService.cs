@@ -62,6 +62,10 @@ namespace ded01ConsoleApp
         /// </summary>
         public void TestTempQuery()
         {
+            Dapper.SqlMapper.SetTypeMap(
+                typeof(UserInfo),
+                new ColumnAttributeTypeMapper<UserInfo>());
+
             var cnstr = SqlHelper.GetConnectionString();
 
 
