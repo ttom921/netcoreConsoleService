@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations.Schema;
+using Dapper.ColumnMapper;
 
 namespace GomoCC.Model
 {
@@ -9,7 +10,7 @@ namespace GomoCC.Model
     {
         public int Id { get; set; }
 
-        [Column("User_Id")]
+        [ColumnMapping("User_Id")]
         public string UserId { get; set; }
 
         public string Uname { get; set; }
