@@ -23,7 +23,8 @@ namespace GomoApp
             //_service.TestMysqlRead();
             Console.WriteLine("----------------------------");
             _service.TestTempQuery();
-
+            Console.WriteLine("----------------------------");
+            _service.TestParamQuery();
 
             Console.ReadKey();
         }

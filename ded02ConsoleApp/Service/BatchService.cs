@@ -13,6 +13,7 @@ namespace GomoService
     {
         void WriteInformation(string input);
         void TestTempQuery();
+        void TestParamQuery();
 
     }
     public class BatchService : IBatchService
@@ -28,16 +29,40 @@ namespace GomoService
             _baseUrl = baseUrl;
             _token = token;
             _logger = logger;
+            //以下可以2選一,物件屬性和資料表的對映
+            //SqlMapper.SetTypeMap(typeof(UserInfo), new ColumnTypeMapper(typeof(UserInfo)));
+            ColumnTypeMapper.RegisterForTypes(typeof(UserInfo), typeof(UserInfo));
         }
-        
+        /// <summary>
+        /// 參數式查詢
+        /// </summary>
+        public void TestParamQuery()
+        {
+            var cnstr = SqlHelper.GetConnectionString();
+            using (var cn = new MySqlConnection(cnstr))
+            {
+                // 開啟連線
+                cn.Open();
+                String sql = "select * from UserInfo where User_Id like @User_Id or UName=@UName";
+                var parameters = new
+                {
+                    User_Id="pg%",
+                    UName= "pg%"
+                };
+                var UserInfos = cn.Query<UserInfo>(sql, parameters);
+                foreach (var userinfo in UserInfos)
+                {
+                    Console.WriteLine("Id: {0}, UserId: {1}, Uname:{2}", userinfo.Id, userinfo.UserId, userinfo.Uname);
+                }
+            }
+        }
+
         /// <summary>
         /// 使用泛型版本的 Query 方法
         /// </summary>
         public void TestTempQuery()
         {
-            //以下可以2選一
-            //SqlMapper.SetTypeMap(typeof(UserInfo), new ColumnTypeMapper(typeof(UserInfo)));
-            ColumnTypeMapper.RegisterForTypes(typeof(UserInfo), typeof(UserInfo));
+            
             
 
             var cnstr = SqlHelper.GetConnectionString();
